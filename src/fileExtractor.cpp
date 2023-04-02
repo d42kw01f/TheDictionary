@@ -20,10 +20,10 @@ std::vector<Word> DictionaryCreator(std::string &fileName) {
     std::ifstream wordFile(fileName);
     getline(wordFile, str);
     getline(wordFile, str);
-    while (!wordFile.eof()){
+    while (!wordFile.eof()) {
         getline(wordFile, readLine);
         size_t pos = readLine.find(startLine);
-        if (pos != std::string::npos){
+        if (pos != std::string::npos) {
             ++number_occ;
             continue;
         }
@@ -38,18 +38,18 @@ std::vector<Word> DictionaryCreator(std::string &fileName) {
             continue;
         }
 
-        if (number_occ == 1){
+        if (number_occ == 1) {
             wordName = readLine;
             if (!wordName.empty() && wordName[wordName.size() - 1] == '\r')
                 wordName.erase(wordName.size() - 1);
             ++number_occ;
-        }else if(number_occ == 2) {
+        } else if (number_occ == 2) {
             wordDescription = readLine;
             if (!wordDescription.empty() && wordDescription[wordDescription.size() - 1] == '\r')
                 wordDescription.erase(wordDescription.size() - 1);
             wordDescription.erase(wordDescription.size() - 1);
             ++number_occ;
-        }else if (number_occ == 3){
+        } else if (number_occ == 3) {
             wordType = readLine;
             if (!wordType.empty() && wordType[wordType.size() - 1] == '\r')
                 wordType.erase(wordType.size() - 1);
@@ -61,12 +61,9 @@ std::vector<Word> DictionaryCreator(std::string &fileName) {
     std::cout << "Do you want to see the entire dictionary[Default N]: ";
     std::string showTheDic;
     std::cin >> showTheDic;
-    if (showTheDic == "Y" || showTheDic == "y" || showTheDic == "yes"){
+    if (showTheDic == "Y" || showTheDic == "y" || showTheDic == "yes") {
         printDictionary(Dictionary);
-    }else{
-        return Dictionary;
     }
-
-
+    return Dictionary;
 }
 
